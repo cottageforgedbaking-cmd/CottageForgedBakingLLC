@@ -1,909 +1,512 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Cottage Forged Baking LLC</title>
-  <meta name="description" content="Small-batch, hand-forged flavors. Breads, pastries, and custom orders." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Allergy-friendly bakery in Clovis, NM. Always gluten-free, dairy-free, nut/tree-nut free. Customizable baked goods for everyone." />
+
+  <!-- Color palette (adjust as needed to match your logo) -->
   <style>
     :root {
-      --bg: #fffdf8;
-      --ink: #5b3a23;
-      --accent: #c85a28;
-      --soft: #f3e6d7;
+      --forest: #22543D;   /* Forest Green */
+      --beige:  #F5F5DC;   /* Beige */
+      --brown:  #5D4037;   /* Brown */
+      --gold:   #D4AF37;   /* Light Gold */
+      --text:   #2D2A26;   /* Dark text for readability */
+      --white:  #FFFFFF;
     }
-    * { box-sizing: border-box; }
-    body {
+
+    /* Base */
+    html, body {
       margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      padding: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background: var(--beige);
       line-height: 1.6;
     }
-    a { color: var(--accent); text-decoration: none; }
+
+    a { color: var(--forest); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* Header / Nav */
     header {
+      background: linear-gradient(135deg, var(--forest), #1A3B2C);
+      color: var(--white);
+      padding: 18px 24px;
       position: sticky;
       top: 0;
-      background: #fffdf8cc;
-      backdrop-filter: saturate(1.2) blur(6px);
-      border-bottom: 1px solid #e7dccb;
-    }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .75rem 0;
+      z-index: 1000;
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: .75rem;
-    }
-    .brand img {
-      height: 60px;
-      border-radius: 50%;
+      gap: 14px;
     }
     .brand h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin: 0;
+      letter-spacing: 0.5px;
     }
-    .menu {
-      display: flex;
-      gap: 1rem;
-      font-weight: 600;
+    .tagline {
+      font-size: 0.95rem;
+      opacity: 0.9;
     }
-    .hero {
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 5rem 1rem;
-      background: linear-gradient(180deg, var(--soft), #fffdf8);
-    }
-    .hero h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      margin: .25rem 0;
-    }
-    .hero p {
-      max-width: 680px;
-      margin: .5rem auto 1rem;
-    }
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .7rem 1rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .cta.secondary {
-      background: #fff;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    @media(max-width:820px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:560px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: #fff;
-      border: 1px solid #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    .card h3 {
-      font-family: "Playfair Display", serif;
-      margin: .25rem 0;
-    }
-    .tag {
-      display: inline-block;
-      background: #f8efe4;
-      color: var(--ink);
-      border: 1px solid #e7dccb;
-      padding: .25rem .5rem;
-      border-radius: .5rem;
-      font-size: .8rem;
-      margin-right: .25rem;
-    }
-    section { padding: 3rem 1rem; }
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
-      margin: .25rem 0 1rem;
-    }
-    .notice {
-      background: #fff;
-      border: 1px dashed #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    footer {
-      padding: 2rem 1rem;
-      border-top: 1px solid #e7dccb;
-      background: #fff;
-    }
-    .cols {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1rem;
-    }
-    @media(max-width:760px) { .cols { grid-template-columns: 1fr; } }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .6rem .9rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .inline-list {
+    nav {
+      margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
+      gap: 14px;
     }
+    nav a {
+      color: var(--white);
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(0deg, rgba(212,175,55,0.08), rgba(212,175,55,0.08)), var(--beige);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin: 0 0 10px;
+      color: var(--forest);
+    }
+    .hero p {
+      max-width: 840px;
+      margin: 0 auto 16px;
+    }
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 2px solid var(--forest);
+      color: var(--forest);
+      background: var(--white);
+    }
+    .btn.primary {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #1F1A12;
+    }
+    .btn:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      transition: all 160ms ease;
+    }
+
+    /* Sections */
+    section {
+      padding: 36px 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h3 {
+      font-size: 1.75rem;
+      margin: 0 0 12px;
+      color: var(--brown);
+    }
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
+      padding: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    /* Menu layout */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }
+    .menu-item h4 {
+      margin: 0 0 10px;
+      color: var(--forest);
+      font-size: 1.1rem;
+      border-bottom: 2px solid rgba(93,64,55,0.2);
+      padding-bottom: 6px;
+    }
+    .price {
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .note {
+      font-size: 0.95rem;
+      color: #4C4A46;
+      margin-top: 6px;
+    }
+    ul.clean {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+    ul.clean li { margin-bottom: 6px; }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+    @media (max-width: 820px) {
+      .about { grid-template-columns: 1fr; }
+    }
+    .badge {
+      display: inline-block;
+      background: var(--forest);
+      color: var(--white);
+      padding: 6px 10px;
+      border-radius: 18px;
+      font-weight: 700;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+    }
+    .gallery-item {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .gallery-item .img {
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, rgba(34,84,61,0.2), rgba(212,175,55,0.2));
+      display: grid;
+      place-items: center;
+      color: #2F2B25;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .gallery-item .caption {
+      padding: 10px;
+      font-size: 0.95rem;
+      color: #4C4A46;
+      border-top: 1px dashed rgba(0,0,0,0.08);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .contact-card h4 {
+      margin: 0 0 6px;
+      color: var(--forest);
+    }
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0;
+    }
+    .small {
+      font-size: 0.92rem;
+      color: #4C4A46;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--forest);
+      color: var(--white);
+      padding: 18px 24px;
+      margin-top: 36px;
+    }
+    .foot {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .foot .legal {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    .foot a { color: var(--gold); }
   </style>
 </head>
 <body>
+
+  <!-- Header & Navigation -->
   <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <img src="logo.png" alt="Cottage Forged logo">
-        <h1>Cottage Forged Baking</h1>
+    <div class="brand" aria-label="Cottage Forged Baking LLC">
+      <!-- Optional: replace with your logo image -->
+      <!-- <img src="logo.png" alt="Cottage Forged Baking LLC logo" height="40"> -->
+      <div>
+        <h1>Cottage Forged Baking LLC</h1>
+        <div class="tagline">Allergy-friendly baked goods everyone can enjoy — always gluten-free, dairy-free, and nut/tree-nut free.</div>
       </div>
-      <nav class="menu">
-        <a href="#menu">Menu</a>
-        <a href="#order">Order</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </div>
+    <nav aria-label="Primary navigation">
+      <a href="#home">Home</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#order">Order</a>
+    </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h2>Small-batch, hand-forged flavors</h2>
-      <p>Artisan breads, laminated pastries, and seasonal bakes crafted in Clovis, NM. We source thoughtfully, price fairly, and bake with care.</p>
-      <div class="inline-list" style="justify-content:center;gap:.75rem;margin-top:.5rem">
-        <a class="cta" href="#order">Pre-order for pickup</a>
-        <a class="cta secondary" href="#menu">View this week’s menu</a>
-      </div>
-    </section>
-
-    <section id="menu" class="wrap">
-      <h3 class="section-title">This week’s menu</h3>
-      <div class="grid">
-        <div class="card"><h3>Sourdough boule</h3><p>72-hour fermentation, crackling crust, tender crumb.</p><span class="tag">$8</span><span class="tag">V</span><span class="tag">DF</span></div>
-        <div class="card"><h3>Almond croissant</h3><p>Twice-baked, almond frangipane, toasted flakes.</p><span class="tag">$5</span></div>
-        <div class="card"><h3>Cinnamon rolls</h3><p>Buttery spirals, vanilla bean cream cheese glaze.</p><span class="tag">$4</span></div>
-        <div class="card"><h3>Seasonal galette</h3><p>Rotating local fruit, rustic crust, raw sugar finish.</p><span class="tag">$6</span></div>
-        <div class="card"><h3>Focaccia slab</h3><p>Olive oil, rosemary, flaky salt; party-size option.</p><span class="tag">$10</span></div>
-        <div class="card"><h3>GF chocolate chip cookies</h3><p>Rice flour blend, dark chocolate, crisp edges.</p><span class="tag">$3</span><span class="tag">GF</span></div>
-      </div>
-      <div class="notice" style="margin-top:1rem">
-        <strong>Allergens:</strong> Products may contain wheat, nuts, dairy, and eggs. GF items are prepared with care but not in a certified facility.
-      </div>
-    </section>
-
-    <section id="order" class="wrap">
-      <h3 class="section-title">Pre-orders and custom bakes</h3>
-      <div class="cols">
-        <div>
-          <p>Pickup windows: Thu–Sat, 
-</section>
-
-<section id="contact" class="wrap">
-  <h3 class="section-title">Contact Us</h3>
-  <p>We'd love to hear from you! Reach out to Cottage Forged Baking through any of the following:</p>
-  <ul>
-    <li>Email: <a href="mailto:cottageforgedbaking@gmail.com">cottageforgedbaking@gmail.com</a></li>
-    <li>Phone: <a href="tel:+17158646589">715-864-6589</a></li>
-    <li>Facebook: <a href="https://www.facebook.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">Cottage Forged Baking</a></li>
-    <li>WhatsApp: <a href="https://wa.me/17158646589" target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a></li>
-    <li>Instagram: <a href="https://www.instagram.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">@cottageforgedbaking</a></li>
-  </ul>
-</section>Here’s your updated HTML for **Cottage Forged Baking LLC**, now featuring your official logo and brand colors. It’s ready to upload to GitHub Pages:
-
----
-
-### ✅ What’s included:
-
-* Your **logo** embedded in the header
-* Color palette pulled from your logo:
-  * **Warm beige background**: `#fffdf8`
-  * **Rustic brown text**: `#5b3a23`
-  * **Wheat gold accent**: `#c85a28`
-* Mobile-friendly layout
-* Placeholder for your **pre-order form**
-* Footer with Clovis, NM and cottage license note
-
----
-
-### 🧁 Updated HTML (ready to save as [`index.html`](https://index.html))
-
-```html
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cottage Forged Baking LLC</title>
-  <meta name="description" content="Small-batch, hand-forged flavors. Breads, pastries, and custom orders." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fffdf8;
-      --ink: #5b3a23;
-      --accent: #c85a28;
-      --soft: #f3e6d7;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header {
-      position: sticky;
-      top: 0;
-      background: #fffdf8cc;
-      backdrop-filter: saturate(1.2) blur(6px);
-      border-bottom: 1px solid #e7dccb;
-    }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .75rem 0;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-    }
-    .brand img {
-      height: 60px;
-      border-radius: 50%;
-    }
-    .brand h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    .menu {
-      display: flex;
-      gap: 1rem;
-      font-weight: 600;
-    }
-    .hero {
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 5rem 1rem;
-      background: linear-gradient(180deg, var(--soft), #fffdf8);
-    }
-    .hero h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      margin: .25rem 0;
-    }
-    .hero p {
-      max-width: 680px;
-      margin: .5rem auto 1rem;
-    }
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .7rem 1rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .cta.secondary {
-      background: #fff;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    @media(max-width:820px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:560px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: #fff;
-      border: 1px solid #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    .card h3 {
-      font-family: "Playfair Display", serif;
-      margin: .25rem 0;
-    }
-    .tag {
-      display: inline-block;
-      background: #f8efe4;
-      color: var(--ink);
-      border: 1px solid #e7dccb;
-      padding: .25rem .5rem;
-      border-radius: .5rem;
-      font-size: .8rem;
-      margin-right: .25rem;
-    }
-    section { padding: 3rem 1rem; }
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
-      margin: .25rem 0 1rem;
-    }
-    .notice {
-      background: #fff;
-      border: 1px dashed #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    footer {
-      padding: 2rem 1rem;
-      border-top: 1px solid #e7dccb;
-      background: #fff;
-    }
-    .cols {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1rem;
-    }
-    @media(max-width:760px) { .cols { grid-template-columns: 1fr; } }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .6rem .9rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .inline-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <img src="logo.png" alt="Cottage Forged logo">
-        <h1>Cottage Forged Baking</h1>
-      </div>
-      <nav class="menu">
-        <a href="#menu">Menu</a>
-        <a href="#order">Order</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <h2>Baked goods without worry</h2>
+    <p>We specialize in gluten-free, dairy-free, nut/tree-nut free treats — made fresh in Clovis, NM 88101. Customization is our love language: egg-free, vegan, corn-free, soy-free, and even sugar-free options upon request.</p>
+    <div class="cta-group">
+      <a class="btn primary" href="#menu">See the menu</a>
+      <a class="btn" href="#contact">Contact us</a>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <h2>Small-batch, hand-forged flavors</h2>
-      <p>Artisan breads, laminated pastries, and seasonal bakes crafted in Clovis, NM. We source thoughtfully, price fairly, and bake with care.</p>
-      <div class="inline-list" style="justify-content:center;gap:.75rem;margin-top:.5rem">
-        <a class="cta" href="#order">Pre-order for pickup</a>
-        <a class="cta secondary" href="#menu">View this week’s menu</a>
+  <!-- Menu -->
+  <section id="menu" aria-labelledby="menu-heading">
+    <h3 id="menu-heading">Menu</h3>
+    <p class="note">Everything is gluten-free, dairy-free, and nut/tree-nut free — and customizable to your needs.</p>
+
+    <div class="menu-grid">
+      <div class="card menu-item">
+        <h4>Baked donuts</h4>
+        <p><span class="price">½ dozen (6): $15.00</span> — same flavor</p>
+        <p><span class="price">Dozen (12): $30.00</span> — four minimum per flavor</p>
+        <ul class="clean">
+          <li><strong>Flavors:</strong> Vanilla with chocolate ganache, Oreo, blueberry, strawberry, red velvet, maple, mocha java, powdered sugar, glazed, Samoa, cinnamon sugar, S’mores, caramel macchiato, and custom.</li>
+        </ul>
       </div>
-    </section>
 
-    <section id="menu" class="wrap">
-      <h3 class="section-title">This week’s menu</h3>
-      <div class="grid">
-        <div class="card"><h3>Sourdough boule</h3><p>72-hour fermentation, crackling crust, tender crumb.</p><span class="tag">$8</span><span class="tag">V</span><span class="tag">DF</span></div>
-        <div class="card"><h3>Almond croissant</h3><p>Twice-baked, almond frangipane, toasted flakes.</p><span class="tag">$5</span></div>
-        <div class="card"><h3>Cinnamon rolls</h3><p>Buttery spirals, vanilla bean cream cheese glaze.</p><span class="tag">$4</span></div>
-        <div class="card"><h3>Seasonal galette</h3><p>Rotating local fruit, rustic crust, raw sugar finish.</p><span class="tag">$6</span></div>
-        <div class="card"><h3>Focaccia slab</h3><p>Olive oil, rosemary, flaky salt; party-size option.</p><span class="tag">$10</span></div>
-        <div class="card"><h3>GF chocolate chip cookies</h3><p>Rice flour blend, dark chocolate, crisp edges.</p><span class="tag">$3</span><span class="tag">GF</span></div>
+      <div class="card menu-item">
+        <h4>Muffins (cupcake size)</h4>
+        <p><span class="price">½ dozen (6): $15.50</span> — same flavor</p>
+        <p><span class="price">Dozen (12): $30.00</span> — four muffins minimum per flavor</p>
+        <ul class="clean">
+          <li><strong>Flavors:</strong> Chocolate chip, coffee cake, blueberry, raspberry white chocolate, lemon poppy seed, double chocolate, chunky monkey, vanilla latte.</li>
+        </ul>
       </div>
-      <div class="notice" style="margin-top:1rem">
-        <strong>Allergens:</strong> Products may contain wheat, nuts, dairy, and eggs. GF items are prepared with care but not in a certified facility.
+
+      <div class="card menu-item">
+        <h4>Jumbo muffins (they’re huge!)</h4>
+        <p><span class="price">½ dozen (6): $20.00</span> — four muffins minimum per flavor</p>
+        <ul class="clean">
+          <li><strong>Flavors:</strong> Same as cupcake-size muffins.</li>
+        </ul>
       </div>
-    </section>
 
-    <section id="order" class="wrap">
-      <h3 class="section-title">Pre-orders and custom bakes</h3>
-      <div class="cols">
-        <div>
-          <p>Pickup windows: Thu–Sat, 
-</section>
-
-<section id="contact" class="wrap">
-  <h3 class="section-title">Contact Us</h3>
-  <p>We'd love to hear from you! Reach out to Cottage Forged Baking through any of the following:</p>
-  <ul>
-    <li>Email: <a href="mailto:cottageforgedbaking@gmail.com">cottageforgedbaking@gmail.com</a></li>
-    <li>Phone: <a href="tel:+17158646589">715-864-6589</a></li>
-    <li>Facebook: <a href="https://www.facebook.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">Cottage Forged Baking</a></li>
-    <li>WhatsApp: <a href="https://wa.me/17158646589" target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a></li>
-    <li>Instagram: <a href="https://www.instagram.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">@cottageforgedbaking</a></li>
-  </ul>
-</section>Here’s your updated HTML for **Cottage Forged Baking LLC**, now featuring your official logo and brand colors. It’s ready to upload to GitHub Pages:
-
----
-
-### ✅ What’s included:
-
-* Your **logo** embedded in the header
-* Color palette pulled from your logo:
-  * **Warm beige background**: `#fffdf8`
-  * **Rustic brown text**: `#5b3a23`
-  * **Wheat gold accent**: `#c85a28`
-* Mobile-friendly layout
-* Placeholder for your **pre-order form**
-* Footer with Clovis, NM and cottage license note
-
----
-
-### 🧁 Updated HTML (ready to save as [`index.html`](https://index.html))
-
-```html
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cottage Forged Baking LLC</title>
-  <meta name="description" content="Small-batch, hand-forged flavors. Breads, pastries, and custom orders." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fffdf8;
-      --ink: #5b3a23;
-      --accent: #c85a28;
-      --soft: #f3e6d7;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header {
-      position: sticky;
-      top: 0;
-      background: #fffdf8cc;
-      backdrop-filter: saturate(1.2) blur(6px);
-      border-bottom: 1px solid #e7dccb;
-    }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .75rem 0;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-    }
-    .brand img {
-      height: 60px;
-      border-radius: 50%;
-    }
-    .brand h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    .menu {
-      display: flex;
-      gap: 1rem;
-      font-weight: 600;
-    }
-    .hero {
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 5rem 1rem;
-      background: linear-gradient(180deg, var(--soft), #fffdf8);
-    }
-    .hero h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      margin: .25rem 0;
-    }
-    .hero p {
-      max-width: 680px;
-      margin: .5rem auto 1rem;
-    }
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .7rem 1rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .cta.secondary {
-      background: #fff;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    @media(max-width:820px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:560px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: #fff;
-      border: 1px solid #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    .card h3 {
-      font-family: "Playfair Display", serif;
-      margin: .25rem 0;
-    }
-    .tag {
-      display: inline-block;
-      background: #f8efe4;
-      color: var(--ink);
-      border: 1px solid #e7dccb;
-      padding: .25rem .5rem;
-      border-radius: .5rem;
-      font-size: .8rem;
-      margin-right: .25rem;
-    }
-    section { padding: 3rem 1rem; }
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
-      margin: .25rem 0 1rem;
-    }
-    .notice {
-      background: #fff;
-      border: 1px dashed #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    footer {
-      padding: 2rem 1rem;
-      border-top: 1px solid #e7dccb;
-      background: #fff;
-    }
-    .cols {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1rem;
-    }
-    @media(max-width:760px) { .cols { grid-template-columns: 1fr; } }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .6rem .9rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .inline-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <img src="logo.png" alt="Cottage Forged logo">
-        <h1>Cottage Forged Baking</h1>
+      <div class="card menu-item">
+        <h4>Cookies</h4>
+        <p><span class="price">Dozen (12): $30.00</span> — six cookies per flavor minimum</p>
+        <ul class="clean">
+          <li><strong>Flavors:</strong> Chocolate chip, brownie chip, snickerdoodle, monster cookie, peanut butter, Oreo, caramel raisin, lemon, mocha java, chocolate chip caramel raisin, and custom.</li>
+        </ul>
       </div>
-      <nav class="menu">
-        <a href="#menu">Menu</a>
-        <a href="#order">Order</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+      <div class="card menu-item">
+        <h4>Cinnamon rolls, sweet breads, monkey bread</h4>
+        <p><span class="price">Dozen: $30.00</span></p>
+      </div>
+
+      <div class="card menu-item">
+        <h4>Bagels</h4>
+        <p><span class="price">Dozen (12): $24.00</span></p>
+        <p><span class="price">½ dozen (6): $12.00</span></p>
+        <p class="note">Flavor choice available.</p>
+      </div>
+
+      <div class="card menu-item">
+        <h4>Custom cakes and cupcakes</h4>
+        <ul class="clean">
+          <li><strong>Flavors:</strong> Key lime, chocolate, vanilla, red velvet, mint, bourbon cream, cookies &amp; cream, mocha java, macchiato, s’mores, carrot cake, lemon, plus custom flavors.</li>
+          <li><strong>Sizes &amp; starting prices:</strong></li>
+          <ul class="clean">
+            <li>8×8 square, 6", 8" circle (includes 2 layers): <span class="price">from $50</span></li>
+            <li>¼ sheet and 9" layered round: <span class="price">from $65</span></li>
+            <li>2-tier cakes: <span class="price">from $65</span></li>
+            <li>Full sheet and 3-tier cakes: <span class="price">from $75</span></li>
+          </ul>
+        </ul>
+      </div>
+
+      <div class="card menu-item">
+        <h4>Cupcakes</h4>
+        <p><span class="price">½ dozen (6): $19.50</span></p>
+        <p><span class="price">Dozen (12): $39.00</span></p>
+      </div>
+
+      <div class="card menu-item">
+        <h4>Assorted bars &amp; brownies</h4>
+        <p><span class="price">9×13 pan (12 bars): $35.00</span></p>
+        <ul class="clean">
+          <li><strong>Varieties:</strong> Lemon bars, s’mores bars, chocolate chip cookie bars, brownies, caramel brownies, raspberry bars, and custom.</li>
+        </ul>
+      </div>
+
+      <div class="card menu-item">
+        <h4>Pies</h4>
+        <p><span class="price">Each: $20.00</span></p>
+        <p class="note">Seasonal shelf-stable flavors.</p>
+      </div>
+
+      <div class="card menu-item">
+        <h4>Add-ons for other allergy-friendly needs</h4>
+        <ul class="clean">
+          <li><strong>Egg-free:</strong> <span class="price">$5.00</span></li>
+          <li><strong>Egg-free &amp; nut-free:</strong> <span class="price">$7.50</span></li>
+          <li><strong>Soy-free:</strong> <span class="price">$5.00</span></li>
+          <li><strong>Fun cake toppers:</strong> <span class="price">$5.00+</span></li>
+        </ul>
+        <p class="note">For deliveries, a delivery charge will be added if outside Clovis, NM.</p>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <h2>Small-batch, hand-forged flavors</h2>
-      <p>Artisan breads, laminated pastries, and seasonal bakes crafted in Clovis, NM. We source thoughtfully, price fairly, and bake with care.</p>
-      <div class="inline-list" style="justify-content:center;gap:.75rem;margin-top:.5rem">
-        <a class="cta" href="#order">Pre-order for pickup</a>
-        <a class="cta secondary" href="#menu">View this week’s menu</a>
+  <!-- Gallery (editable placeholders) -->
+  <section id="gallery" aria-labelledby="gallery-heading">
+    <h3 id="gallery-heading">Gallery</h3>
+    <p class="note">Add your images later: replace the placeholders below with actual files (e.g., <code>images/donuts.jpg</code>) and captions.</p>
+
+    <div class="gallery-grid">
+      <!-- To add images:
+           1) Create an /images folder in your repo.
+           2) Upload your photos (e.g., donuts.jpg, muffins.jpg).
+           3) Replace the placeholder DIV with <img src="images/yourfile.jpg" alt="Description">.
+           4) Update the caption text. -->
+      <div class="gallery-item">
+        <div class="img">Image placeholder</div>
+        <div class="caption">Baked donuts — customizable flavors</div>
       </div>
-    </section>
-
-    <section id="menu" class="wrap">
-      <h3 class="section-title">This week’s menu</h3>
-      <div class="grid">
-        <div class="card"><h3>Sourdough boule</h3><p>72-hour fermentation, crackling crust, tender crumb.</p><span class="tag">$8</span><span class="tag">V</span><span class="tag">DF</span></div>
-        <div class="card"><h3>Almond croissant</h3><p>Twice-baked, almond frangipane, toasted flakes.</p><span class="tag">$5</span></div>
-        <div class="card"><h3>Cinnamon rolls</h3><p>Buttery spirals, vanilla bean cream cheese glaze.</p><span class="tag">$4</span></div>
-        <div class="card"><h3>Seasonal galette</h3><p>Rotating local fruit, rustic crust, raw sugar finish.</p><span class="tag">$6</span></div>
-        <div class="card"><h3>Focaccia slab</h3><p>Olive oil, rosemary, flaky salt; party-size option.</p><span class="tag">$10</span></div>
-        <div class="card"><h3>GF chocolate chip cookies</h3><p>Rice flour blend, dark chocolate, crisp edges.</p><span class="tag">$3</span><span class="tag">GF</span></div>
+      <div class="gallery-item">
+        <div class="img">Image placeholder</div>
+        <div class="caption">Cupcake-size muffins — classic and creative</div>
       </div>
-      <div class="notice" style="margin-top:1rem">
-        <strong>Allergens:</strong> Products may contain wheat, nuts, dairy, and eggs. GF items are prepared with care but not in a certified facility.
+      <div class="gallery-item">
+        <div class="img">Image placeholder</div>
+        <div class="caption">Custom cakes — layered and tiered</div>
       </div>
-    </section>
-
-    <section id="order" class="wrap">
-      <h3 class="section-title">Pre-orders and custom bakes</h3>
-      <div class="cols">
-        <div>
-          <p>Pickup windows: Thu–Sat, 
-</section>
-
-<section id="contact" class="wrap">
-  <h3 class="section-title">Contact Us</h3>
-  <p>We'd love to hear from you! Reach out to Cottage Forged Baking through any of the following:</p>
-  <ul>
-    <li>Email: <a href="mailto:cottageforgedbaking@gmail.com">cottageforgedbaking@gmail.com</a></li>
-    <li>Phone: <a href="tel:+17158646589">715-864-6589</a></li>
-    <li>Facebook: <a href="https://www.facebook.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">Cottage Forged Baking</a></li>
-    <li>WhatsApp: <a href="https://wa.me/17158646589" target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a></li>
-    <li>Instagram: <a href="https://www.instagram.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">@cottageforgedbaking</a></li>
-  </ul>
-</section>Here’s your updated HTML for **Cottage Forged Baking LLC**, now featuring your official logo and brand colors. It’s ready to upload to GitHub Pages:
-
----
-
-### ✅ What’s included:
-
-* Your **logo** embedded in the header
-* Color palette pulled from your logo:
-  * **Warm beige background**: `#fffdf8`
-  * **Rustic brown text**: `#5b3a23`
-  * **Wheat gold accent**: `#c85a28`
-* Mobile-friendly layout
-* Placeholder for your **pre-order form**
-* Footer with Clovis, NM and cottage license note
-
----
-
-### 🧁 Updated HTML (ready to save as [`index.html`](https://index.html))
-
-```html
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cottage Forged Baking LLC</title>
-  <meta name="description" content="Small-batch, hand-forged flavors. Breads, pastries, and custom orders." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #fffdf8;
-      --ink: #5b3a23;
-      --accent: #c85a28;
-      --soft: #f3e6d7;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      line-height: 1.6;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    header {
-      position: sticky;
-      top: 0;
-      background: #fffdf8cc;
-      backdrop-filter: saturate(1.2) blur(6px);
-      border-bottom: 1px solid #e7dccb;
-    }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .75rem 0;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: .75rem;
-    }
-    .brand img {
-      height: 60px;
-      border-radius: 50%;
-    }
-    .brand h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    .menu {
-      display: flex;
-      gap: 1rem;
-      font-weight: 600;
-    }
-    .hero {
-      display: grid;
-      place-items: center;
-      text-align: center;
-      padding: 5rem 1rem;
-      background: linear-gradient(180deg, var(--soft), #fffdf8);
-    }
-    .hero h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 2.2rem;
-      margin: .25rem 0;
-    }
-    .hero p {
-      max-width: 680px;
-      margin: .5rem auto 1rem;
-    }
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .7rem 1rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .cta.secondary {
-      background: #fff;
-      border: 2px solid var(--accent);
-      color: var(--accent);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-    @media(max-width:820px) { .grid { grid-template-columns: 1fr 1fr; } }
-    @media(max-width:560px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: #fff;
-      border: 1px solid #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    .card h3 {
-      font-family: "Playfair Display", serif;
-      margin: .25rem 0;
-    }
-    .tag {
-      display: inline-block;
-      background: #f8efe4;
-      color: var(--ink);
-      border: 1px solid #e7dccb;
-      padding: .25rem .5rem;
-      border-radius: .5rem;
-      font-size: .8rem;
-      margin-right: .25rem;
-    }
-    section { padding: 3rem 1rem; }
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.6rem;
-      margin: .25rem 0 1rem;
-    }
-    .notice {
-      background: #fff;
-      border: 1px dashed #e7dccb;
-      border-radius: .75rem;
-      padding: 1rem;
-    }
-    footer {
-      padding: 2rem 1rem;
-      border-top: 1px solid #e7dccb;
-      background: #fff;
-    }
-    .cols {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 1rem;
-    }
-    @media(max-width:760px) { .cols { grid-template-columns: 1fr; } }
-    .btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .6rem .9rem;
-      border-radius: .5rem;
-      font-weight: 700;
-    }
-    .inline-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="wrap nav">
-      <div class="brand">
-        <img src="logo.png" alt="Cottage Forged logo">
-        <h1>Cottage Forged Baking</h1>
+      <div class="gallery-item">
+        <div class="img">Image placeholder</div>
+        <div class="caption">Cookies — from snickerdoodle to mocha java</div>
       </div>
-      <nav class="menu">
-        <a href="#menu">Menu</a>
-        <a href="#order">Order</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="gallery-item">
+        <div class="img">Image placeholder</div>
+        <div class="caption">Assorted bars & brownies — 9×13 trays</div>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <h2>Small-batch, hand-forged flavors</h2>
-      <p>Artisan breads, laminated pastries, and seasonal bakes crafted in Clovis, NM. We source thoughtfully, price fairly, and bake with care.</p>
-      <div class="inline-list" style="justify-content:center;gap:.75rem;margin-top:.5rem">
-        <a class="cta" href="#order">Pre-order for pickup</a>
-        <a class="cta secondary" href="#menu">View this week’s menu</a>
+  <!-- About -->
+  <section id="about" aria-labelledby="about-heading">
+    <h3 id="about-heading">About</h3>
+    <div class="about card">
+      <div>
+        <p><strong>Welcome to Cottage Forged Baking LLC</strong> — here we make baked goods that everyone can enjoy. We specialize in allergy-friendly bakery products that are always gluten-free/celiac safe, dairy-free, and nut/tree-nut free. We can adapt any item to be egg-free, vegan, corn-free, soy-free, and even sugar-free upon request.</p>
+        <p>No more being fearful of eating bakery products — we have strict policies in place to make sure your items are safe to eat, always.</p>
+        <div style="margin-top:8px;">
+          <span class="badge">Gluten-free always</span>
+          <span class="badge">Dairy-free always</span>
+          <span class="badge">Nut/tree-nut free always</span>
+          <span class="badge">Customizable</span>
+        </div>
       </div>
-    </section>
-
-    <section id="menu" class="wrap">
-      <h3 class="section-title">This week’s menu</h3>
-      <div class="grid">
-        <div class="card"><h3>Sourdough boule</h3><p>72-hour fermentation, crackling crust, tender crumb.</p><span class="tag">$8</span><span class="tag">V</span><span class="tag">DF</span></div>
-        <div class="card"><h3>Almond croissant</h3><p>Twice-baked, almond frangipane, toasted flakes.</p><span class="tag">$5</span></div>
-        <div class="card"><h3>Cinnamon rolls</h3><p>Buttery spirals, vanilla bean cream cheese glaze.</p><span class="tag">$4</span></div>
-        <div class="card"><h3>Seasonal galette</h3><p>Rotating local fruit, rustic crust, raw sugar finish.</p><span class="tag">$6</span></div>
-        <div class="card"><h3>Focaccia slab</h3><p>Olive oil, rosemary, flaky salt; party-size option.</p><span class="tag">$10</span></div>
-        <div class="card"><h3>GF chocolate chip cookies</h3><p>Rice flour blend, dark chocolate, crisp edges.</p><span class="tag">$3</span><span class="tag">GF</span></div>
+      <div class="card" style="background: #FFFDF5; border-color: rgba(212,175,55,0.35);">
+        <h4 style="margin-top:0;color:var(--brown)">Operating in Clovis, NM 88101</h4>
+        <p class="small">Local pickup available. Delivery fee applies outside Clovis, NM.</p>
+        <p class="small">We bake to order for maximum freshness.</p>
       </div>
-      <div class="notice" style="margin-top:1rem">
-        <strong>Allergens:</strong> Products may contain wheat, nuts, dairy, and eggs. GF items are prepared with care but not in a certified facility.
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <h3 id="contact-heading">Contact</h3>
+    <div class="contact-grid">
+      <div class="card contact-card">
+        <h4>Email</h4>
+        <div class="contact-row">
+          <span>📧</span>
+          <a href="mailto:pottsalyssa01@gmail.com">pottsalyssa01@gmail.com</a>
+        </div>
       </div>
-    </section>
+      <div class="card contact-card">
+        <h4>Phone</h4>
+        <div class="contact-row">
+          <span>📞</span>
+          <a href="tel:+17158646589">(715) 864-6589</a>
+        </div>
+      </div>
+      <div class="card contact-card">
+        <h4>WhatsApp</h4>
+        <div class="contact-row">
+          <span>💬</span>
+          <!-- Optional: replace with your direct WhatsApp link like https://wa.me/17158646589 -->
+          <a href="#order" aria-label="Contact via WhatsApp">Contact us on WhatsApp</a>
+        </div>
+      </div>
+      <div class="card contact-card">
+        <h4>Instagram</h4>
+        <div class="contact-row">
+          <span>📷</span>
+          <!-- Replace # with your Instagram profile URL -->
+          <a href="#" target="_blank" rel="noopener">Instagram page</a>
+        </div>
+      </div>
+      <div class="card contact-card">
+        <h4>Facebook</h4>
+        <div class="contact-row">
+          <span>📘</span>
+          <!-- Replace # with your Facebook page URL -->
+          <a href="#" target="_blank" rel="noopener">Facebook page</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="order" class="wrap">
-      <h3 class="section-title">Pre-orders and custom bakes</h3>
-      <div class="cols">
-        <div>
-          <p>Pickup windows: Thu–Sat, 
-</section>
+  <!-- Order -->
+  <section id="order" aria-labelledby="order-heading">
+    <h3 id="order-heading">Order</h3>
+    <div class="card">
+      <p>Ready to order or customize? Reach out with your desired items, flavors, and any allergy adaptations. We’ll confirm details, pickup/delivery timing, and pricing.</p>
+      <div class="cta-group">
+        <a class="btn primary" href="mailto:pottsalyssa01@gmail.com?subject=Order%20Request%20-%20Cottage%20Forged%20Baking%20LLC">Email your order</a>
+        <a class="btn" href="tel:+17158646589">Call now</a>
+        <a class="btn" href="#contact">Find more contact options</a>
+      </div>
+      <p class="note" style="margin-top:12px;">Delivery charges apply outside Clovis, NM. All items are baked in an allergy-conscious environment with strict policies for safety.</p>
+    </div>
+  </section>
 
-<section id="contact" class="wrap">
-  <h3 class="section-title">Contact Us</h3>
-  <p>We'd love to hear from you! Reach out to Cottage Forged Baking through any of the following:</p>
-  <ul>
-    <li>Email: <a href="mailto:cottageforgedbaking@gmail.com">cottageforgedbaking@gmail.com</a></li>
-    <li>Phone: <a href="tel:+17158646589">715-864-6589</a></li>
-    <li>Facebook: <a href="https://www.facebook.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">Cottage Forged Baking</a></li>
-    <li>WhatsApp: <a href="https://wa.me/17158646589" target="_blank" rel="noopener noreferrer">Chat with us on WhatsApp</a></li>
-    <li>Instagram: <a href="https://www.instagram.com/cottageforgedbaking" target="_blank" rel="noopener noreferrer">@cottageforgedbaking</a></li>
-  </ul>
-</section>
+  <!-- Footer -->
+  <footer>
+    <div class="foot">
+      <div class="legal">© <span id="year"></span> Cottage Forged Baking LLC — Clovis, NM 88101</div>
+      <div><a href="#about">About</a> · <a href="#menu">Menu</a> · <a href="#contact">Contact</a></div>
+    </div>
+    <script>
+      // Current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+
+</body>
+</html>
